@@ -12,6 +12,8 @@ const reminderRoutes = require('./routes/reminderRoutes');
 const checkinRoutes = require('./routes/checkinRoutes');
 const sertifikatRoutes = require('./routes/sertifikatRoutes');
 
+const authRoutes = require('./routes/authRoutes');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -28,6 +30,7 @@ app.use('/peserta', pesertaRoutes);
 app.use('/reminder', reminderRoutes);
 app.use('/checkin', checkinRoutes);
 app.use('/sertifikat', sertifikatRoutes);
+app.use('/auth', authRoutes);
 app.use((req, res) => res.status(404).render('404', { title: '404 - Halaman Tidak Ditemukan' }));
 
 app.listen(PORT, () => console.log(`Server berjalan di http://localhost:${PORT}`));
