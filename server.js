@@ -6,6 +6,7 @@ require('dotenv').config();
 const db = require('./models/db');
 
 const indexRoutes = require('./routes/index');
+const authRoutes = require('./routes/authRoutes');
 const eventRoutes = require('./routes/eventRoutes');
 const pesertaRoutes = require('./routes/pesertaRoutes');
 const reminderRoutes = require('./routes/reminderRoutes');
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'fti-event-management-secret', resave: false, saveUninitialized: true }));
 
 app.use('/', indexRoutes);
+app.use('/auth', authRoutes);
 app.use('/events', eventRoutes);
 app.use('/peserta', pesertaRoutes);
 app.use('/reminder', reminderRoutes);
