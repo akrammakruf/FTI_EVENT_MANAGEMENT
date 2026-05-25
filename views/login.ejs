@@ -1,1 +1,200 @@
-<%- include('partials/header') %><div class="card max-w-md mx-auto"><h2 class="text-xl font-bold mb-4">Login</h2><form action="/login" method="POST" class="space-y-4"><input name="username" class="input" placeholder="Username" required><button class="btn-primary w-full">Login</button></form></div><%- include('partials/footer') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - FTI Event Management</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#f4f6fb;
+      /* overflow:hidden dihapus */
+    }
+
+    .navbar{
+      width:100%;
+      height:72px;
+      background:white;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 40px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.04);
+      position:relative;
+      z-index:10;
+    }
+
+    .logo{
+      font-size:18px;
+      font-weight:700;
+      color:#2563eb;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:32px;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:#1e293b;
+      font-size:14px;
+      transition:0.2s;
+    }
+
+    .nav-links a:hover{
+      color:#2563eb;
+    }
+
+    .auth-section{
+      min-height:calc(100vh - 72px); /* min-height bukan height */
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg, #dbeafe 0%, #e9d5ff 100%);
+      padding:32px 20px;
+    }
+
+    .auth-card{
+      width:100%;
+      max-width:360px;
+      background:white;
+      border-radius:24px;
+      padding:30px 26px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .auth-header{
+      text-align:center;
+      margin-bottom:24px;
+    }
+
+    .auth-header h1{
+      font-size:28px;
+      color:#172554;
+      margin-bottom:10px;
+    }
+
+    .auth-header p{
+      font-size:12px;
+      color:#64748b;
+      line-height:1.5;
+    }
+
+    .form-group{
+      margin-bottom:16px;
+    }
+
+    .form-group label{
+      display:block;
+      margin-bottom:7px;
+      font-size:13px;
+      font-weight:600;
+      color:#1e293b;
+    }
+
+    .form-group input{
+      width:100%;
+      height:42px;
+      border:1px solid #dbe2ea;
+      border-radius:14px;
+      padding:0 14px;
+      font-size:12px;
+      outline:none;
+      transition:0.2s;
+    }
+
+    .form-group input:focus{
+      border-color:#7c3aed;
+      box-shadow:0 0 0 3px rgba(124,58,237,0.1);
+    }
+
+    .auth-btn{
+      width:100%;
+      height:44px;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(90deg, #3b82f6, #9333ea);
+      color:white;
+      font-size:13px;
+      font-weight:600;
+      cursor:pointer;
+      margin-top:4px;
+      transition:0.2s;
+    }
+
+    .auth-btn:hover{
+      transform:translateY(-1px);
+      opacity:0.95;
+    }
+
+    .auth-footer{
+      margin-top:18px;
+      text-align:center;
+      font-size:12px;
+      color:#64748b;
+    }
+
+    .auth-footer a{
+      text-decoration:none;
+      color:#7c3aed;
+      font-weight:600;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">FTI Event Management</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Event</a>
+      <a href="#">Peserta</a>
+      <a href="#">Reminder</a>
+      <a href="#">Check-in</a>
+      <a href="#">Sertifikat</a>
+    </div>
+  </nav>
+
+  <section class="auth-section">
+    <div class="auth-card">
+
+      <div class="auth-header">
+        <h1>Sign In</h1>
+        <p>Selamat datang kembali!</p>
+        <p>Silakan masuk untuk mengakses sistem event.</p>
+      </div>
+
+      <form>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="Masukkan email">
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" placeholder="Masukkan password">
+        </div>
+
+        <button class="auth-btn">Sign In</button>
+
+      </form>
+
+      <div class="auth-footer">
+        Belum punya akun? <a href="/register">Sign Up</a>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

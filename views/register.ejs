@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - FTI Event Management</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#f4f6fb;
+    }
+
+    .navbar{
+      width:100%;
+      height:72px;
+      background:white;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 40px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.04);
+      position:relative;
+      z-index:10;
+    }
+
+    .logo{
+      font-size:18px;
+      font-weight:700;
+      color:#2563eb;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:32px;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:#1e293b;
+      font-size:14px;
+      transition:0.2s;
+    }
+
+    .nav-links a:hover{
+      color:#2563eb;
+    }
+
+    .auth-section{
+      min-height:calc(100vh - 72px);
+      width:100%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg, #dbeafe 0%, #e9d5ff 100%);
+      padding:32px 20px;
+    }
+
+    .auth-card{
+      width:100%;
+      max-width:560px;
+      background:white;
+      border-radius:24px;
+      padding:32px 36px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .auth-header{
+      text-align:center;
+      margin-bottom:24px;
+    }
+
+    .auth-header h1{
+      font-size:28px;
+      color:#172554;
+      margin-bottom:10px;
+    }
+
+    .auth-header p{
+      font-size:12px;
+      color:#64748b;
+      line-height:1.5;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0 20px;
+    }
+
+    .form-group.full{
+      grid-column:1 / -1;
+    }
+
+    .form-group{
+      margin-bottom:16px;
+    }
+
+    .form-group label{
+      display:block;
+      margin-bottom:7px;
+      font-size:13px;
+      font-weight:600;
+      color:#1e293b;
+    }
+
+    .form-group input{
+      width:100%;
+      height:42px;
+      border:1px solid #dbe2ea;
+      border-radius:14px;
+      padding:0 14px;
+      font-size:12px;
+      outline:none;
+      transition:0.2s;
+    }
+
+    .form-group input:focus{
+      border-color:#7c3aed;
+      box-shadow:0 0 0 3px rgba(124,58,237,0.1);
+    }
+
+    .password-info{
+      font-size:11px;
+      color:#94a3b8;
+      margin-top:-10px;
+      margin-bottom:16px;
+    }
+
+    .error-msg{
+      display:none;
+      font-size:11px;
+      color:#ef4444;
+      margin-top:5px;
+    }
+
+    .auth-btn{
+      width:100%;
+      height:44px;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(90deg, #3b82f6, #9333ea);
+      color:white;
+      font-size:13px;
+      font-weight:600;
+      cursor:pointer;
+      margin-top:4px;
+      transition:0.2s;
+    }
+
+    .auth-btn:hover{
+      transform:translateY(-1px);
+      opacity:0.95;
+    }
+
+    .auth-btn:disabled{
+      opacity:0.5;
+      cursor:not-allowed;
+      transform:none;
+    }
+
+    .auth-footer{
+      margin-top:18px;
+      text-align:center;
+      font-size:12px;
+      color:#64748b;
+    }
+
+    .auth-footer a{
+      text-decoration:none;
+      color:#7c3aed;
+      font-weight:600;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">FTI Event Management</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Event</a>
+      <a href="#">Peserta</a>
+      <a href="#">Reminder</a>
+      <a href="#">Check-in</a>
+      <a href="#">Sertifikat</a>
+    </div>
+  </nav>
+
+  <section class="auth-section">
+    <div class="auth-card">
+
+      <div class="auth-header">
+        <h1>Sign Up</h1>
+        <p>Selamat datang!</p>
+        <p>Buat akun untuk mulai mengakses sistem event.</p>
+      </div>
+
+      <form id="registerForm">
+        <div class="form-grid">
+
+          <div class="form-group full">
+            <label>Nama Lengkap</label>
+            <input type="text" placeholder="Masukkan nama lengkap">
+          </div>
+
+          <div class="form-group full">
+            <label>Email</label>
+            <input type="email" placeholder="Masukkan email">
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input id="password" type="password" placeholder="Masukkan password" minlength="8" maxlength="20">
+          </div>
+
+          <div class="form-group">
+            <label>Konfirmasi Password</label>
+            <input id="konfirmasi" type="password" placeholder="Ulangi password">
+            <span id="pesan-error" class="error-msg">⚠ Password tidak cocok</span>
+          </div>
+
+        </div>
+
+        <div class="password-info">Password 8–20 karakter.</div>
+
+        <button class="auth-btn" id="submitBtn">Sign Up</button>
+      </form>
+
+      <div class="auth-footer">
+        Sudah punya akun? <a href="/login">Sign In</a>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    const password   = document.getElementById('password');
+    const konfirmasi = document.getElementById('konfirmasi');
+    const pesanError = document.getElementById('pesan-error');
+    const submitBtn  = document.getElementById('submitBtn');
+
+    konfirmasi.addEventListener('input', function () {
+      if (konfirmasi.value === '') {
+        // Kosong — reset ke default
+        konfirmasi.style.borderColor = '#dbe2ea';
+        konfirmasi.style.boxShadow   = 'none';
+        pesanError.style.display     = 'none';
+        submitBtn.disabled           = false;
+
+      } else if (konfirmasi.value !== password.value) {
+        // Tidak cocok — merah
+        konfirmasi.style.borderColor = '#ef4444';
+        konfirmasi.style.boxShadow   = '0 0 0 3px rgba(239,68,68,0.1)';
+        pesanError.style.display     = 'block';
+        submitBtn.disabled           = true;
+
+      } else {
+        // Cocok — hijau
+        konfirmasi.style.borderColor = '#22c55e';
+        konfirmasi.style.boxShadow   = '0 0 0 3px rgba(34,197,94,0.1)';
+        pesanError.style.display     = 'none';
+        submitBtn.disabled           = false;
+      }
+    });
+
+    // Cegah submit kalau password tidak cocok
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+      if (password.value !== konfirmasi.value) {
+        e.preventDefault();
+        konfirmasi.focus();
+      }
+    });
+  </script>
+
+</body>
+</html>
